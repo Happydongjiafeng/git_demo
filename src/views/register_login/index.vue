@@ -27,7 +27,6 @@
                             <el-icon>
                                 <svg t="1733814264848" class="icon" viewBox="0 0 1024 1024" version="1.1"
                                     xmlns="http://www.w3.org/2000/svg" p-id="4238" width="1em" height="1em">
-
                                     <path
                                         d="M943.1 172c-2.4-0.2-245.1-25.3-413.8-147.8-5.1-3.7-11-5.6-17.3-5.6-6.2 0-12.2 1.9-17.3 5.6C326.9 146 83.3 171.8 80.9 172c-15.2 1.4-26.6 14.1-26.6 29.3 0 6.7 0.6 165.8 54.8 344.4 32.1 105.8 76.4 196.4 131.9 269.2 70.3 92.3 158.5 156 262 189.2 2.9 0.9 5.9 1.4 9 1.4s6.1-0.5 8.9-1.4c103.6-33.2 191.7-96.8 262-189.2 55.4-72.7 99.8-163.2 131.9-269.2 54.1-178.6 54.8-337.7 54.8-344.4C969.7 186.1 958.3 173.5 943.1 172zM910.1 227.2l-0.1 1.6c-2.9 58.1-13.4 174.4-51.4 299.9-66.7 220.1-183.1 360.1-346 416.1L512 945l-0.6-0.2C349 888.9 232.7 749.4 165.8 530.1c-39.8-130.5-49.4-254.2-51.8-301.4l-0.1-1.6 1.5-0.2c70.6-10.3 250.5-44.8 395.5-142.4l0.9-0.7 1 0.7C658 182.1 837.9 216.6 908.5 227L910.1 227.2z"
                                         p-id="4239"></path>
@@ -61,10 +60,16 @@ defineOptions({
 })
 const ruleFormRef = ref<FormInstance>() // 表单实例
 
-const loginForm = reactive({ //表单数据
+interface loginFormInterface { //表单数据类型
+    userName: string;
+    password: string;
+    validatorKey: number | undefined;
+}
+
+const loginForm = reactive<loginFormInterface>({ //表单数据
     userName: '', //用户名
     password: '', //密码
-    validatorKey: '', //验证码
+    validatorKey: undefined, //验证码
 })
 
 const rules = {
@@ -92,8 +97,8 @@ const rules = {
     position: relative;
 
     .lottie {
-        width: 60%;
-        height: 80%;
+        width: 800px;
+        height: 800px;
         margin: 0 auto;
     }
 
